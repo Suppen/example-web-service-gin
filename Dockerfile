@@ -19,6 +19,9 @@ RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /app .
 # Stage 2: Create a minimal image containing only the release binary
 FROM scratch
 
+# Create a non-root user to run the application
+USER 1001:1001
+
 # Copy the compiled binary from the builder stage
 COPY --from=builder /app /app
 
