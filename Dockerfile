@@ -25,5 +25,8 @@ COPY --from=builder /app /app
 # Expose the port your app uses (adjust if needed)
 EXPOSE 8080
 
+# Run in production mode
+ENV GIN_MODE=release
+
 # Set the binary as the container entrypoint
 ENTRYPOINT ["/app"]
